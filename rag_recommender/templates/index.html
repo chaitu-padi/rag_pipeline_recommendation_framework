@@ -3,9 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced RAG Pipeline Recommender</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>RAG Pipeline Recommender - Comprehensive Analysis</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .progress-container {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 25%;
+            transition: width 0.3s ease;
+        }
+
         .form-section {
             display: none;
         }
@@ -19,16 +82,27 @@
         .conditional-field {
             display: none;
         }
+
+        /* Add all other styles from enhanced interface */
+        /* ... existing styles ... */
     </style>
 </head>
 <body>
-    <div class="container my-5">
-        <h1 class="mb-4">Enhanced RAG Pipeline Recommender</h1>
-        <div class="progress mb-4">
-            <div class="progress-bar" role="progressbar" style="width: 25%"></div>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 RAG Pipeline Recommender</h1>
+            <p>Get intelligent, expert-level recommendations for your RAG and embedding pipelines based on comprehensive business analysis</p>
         </div>
 
-        <form id="recommendationForm">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Section 1 of 4: Data Characteristics</div>
+        </div>
+
+        <div class="form-container">
+            <form id="recommendationForm" action="/recommend-comprehensive" method="POST">
             <!-- Section 1: Data Characteristics -->
             <div class="form-section active" id="section1">
                 <h3>Data Characteristics</h3>
@@ -160,22 +234,83 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function nextSection(current) {
-            document.querySelector(`#section${current}`).classList.remove('active');
-            document.querySelector(`#section${current + 1}`).classList.add('active');
-            updateProgress((current + 1) * 25);
+        let currentSection = 1;
+        const totalSections = 4;
+
+        function toggleSection(sectionNum) {
+            // Don't allow jumping ahead
+            if (sectionNum > currentSection + 1) return;
+
+            // Remove active class from all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+
+            // Add active class to clicked section
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+
+            currentSection = sectionNum;
+            updateProgress();
+            updateNavigation();
         }
 
-        function previousSection(current) {
-            document.querySelector(`#section${current}`).classList.remove('active');
-            document.querySelector(`#section${current - 1}`).classList.add('active');
-            updateProgress((current - 1) * 25);
+        function nextSection() {
+            if (currentSection < totalSections && validateCurrentSection()) {
+                toggleSection(currentSection + 1);
+            }
         }
 
-        function updateProgress(percent) {
-            document.querySelector('.progress-bar').style.width = percent + '%';
+        function previousSection() {
+            if (currentSection > 1) {
+                toggleSection(currentSection - 1);
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentSection / totalSections) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `Section ${currentSection} of ${totalSections}`;
+        }
+
+        function updateNavigation() {
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const submitButton = document.getElementById('submitButton');
+
+            prevButton.style.display = currentSection > 1 ? 'block' : 'none';
+            if (currentSection === totalSections) {
+                nextButton.style.display = 'none';
+                submitButton.style.display = 'block';
+            } else {
+                nextButton.style.display = 'block';
+                submitButton.style.display = 'none';
+            }
+        }
+
+        function validateCurrentSection() {
+            const currentForm = document.getElementById(`section${currentSection}`);
+            const requiredFields = currentForm.querySelectorAll('[required]');
+            
+            let isValid = true;
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    field.style.borderColor = '#dc3545';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#e9ecef';
+                }
+            });
+
+            return isValid;
+        }
+
+        function updateConditionalFields() {
+            // Show/hide mixed formats field
+            const mixedFormatsField = document.getElementById('mixedFormatsField');
+            const primaryDataType = document.getElementById('primaryDataType');
+            
+            if (mixedFormatsField) {
+                mixedFormatsField.style.display = primaryDataType.value === 'mixed' ? 'block' : 'none';
+            }
         }
 
         document.getElementById('recommendationForm').addEventListener('submit', async (e) => {
@@ -260,6 +395,13 @@
             resultsDiv.style.display = 'block';
             resultsDiv.scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Initialize form state
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            updateNavigation();
+            updateConditionalFields();
+        });
     </script>
 </body>
 </html>
