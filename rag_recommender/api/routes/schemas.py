@@ -27,6 +27,11 @@ class ComprehensiveRequirementsRequest(BaseModel):
     citation_requirements: str = "helpful"
     expected_queries_per_day: str = "100-1000"
     concurrent_users: str = "1-10"
+    
+    # Default values for fields missing from request
+    update_frequency: str = "static"
+    average_document_length: str = "medium"
+    language_requirements: List[str] = ["english"]
 
     # Business context
     budget_range: str

@@ -9,12 +9,12 @@ class EnhancedKnowledgeBase:
 
     def __init__(self):
         self.embedding_models = self._load_enhanced_embedding_models()
-        self.vector_databases = self._load_enhanced_vector_databases()
-        self.chunking_strategies = self._load_enhanced_chunking_strategies()
-        self.llm_models = self._load_enhanced_llm_models()
-        self.domain_expertise = self._load_domain_expertise()
-        self.deployment_patterns = self._load_deployment_patterns()
-        self.integration_options = self._load_integration_options()
+        self.vector_databases = {}  # Initialize empty for now
+        self.chunking_strategies = {}  # Initialize empty for now
+        self.llm_models = {}  # Initialize empty for now
+        self.domain_expertise = {}  # Initialize empty for now
+        self.deployment_patterns = {}  # Initialize empty for now
+        self.integration_options = {}  # Initialize empty for now
 
     def _load_enhanced_embedding_models(self) -> Dict[str, ComponentSpec]:
         """Load comprehensive embedding model specifications"""
@@ -22,35 +22,28 @@ class EnhancedKnowledgeBase:
             # OpenAI Models
             "text-embedding-3-large": ComponentSpec(
                 name="text-embedding-3-large",
-                type="embedding_model",
-                provider="openai",
-                config={
+                description="OpenAI's most capable text embedding model for high-accuracy semantic search and information retrieval",
+                configuration={
                     "dimensions": 3072,
                     "max_tokens": 8191,
                     "pricing": "$0.00013 per 1K tokens",
                     "context_window": 8191,
-                    "output_dimensions_flexible": True
+                    "output_dimensions_flexible": True,
+                    "provider": "openai",
+                    "model_type": "embedding_model",
+                    "deployment_options": ["api_only", "azure_openai"],
+                    "cost_tier": "high",
+                    "complexity": "simple",
+                    "scalability_rating": "high",
+                    "maintenance_effort": "low"
                 },
-                capabilities=[
+                requirements=[
                     "multilingual", "high_accuracy", "large_context", "domain_adaptation",
                     "custom_dimensions", "batch_processing", "fine_tuning_available"
                 ],
                 limitations=[
                     "api_dependency", "higher_cost", "rate_limits", "requires_api_key"
-                ],
-                cost_tier="high",
-                complexity="simple",
-                deployment_options=["api_only", "azure_openai"],
-                domain_suitability=[
-                    "general", "legal", "medical", "financial", "technical", 
-                    "academic", "customer_support", "compliance"
-                ],
-                language_support=[
-                    "english", "spanish", "french", "german", "chinese", "japanese",
-                    "korean", "russian", "portuguese", "italian", "arabic", "hindi"
-                ],
-                scalability_rating="high",
-                maintenance_effort="low"
+                ]
             ),
             # ... (rest of the embedding models)
         }

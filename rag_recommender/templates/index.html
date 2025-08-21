@@ -69,22 +69,401 @@
             transition: width 0.3s ease;
         }
 
-        .form-section {
-            display: none;
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #495057;
         }
-        .form-section.active {
-            display: block;
+
+        .form-container {
+            padding: 30px;
         }
-        .help-text {
-            font-size: 0.875rem;
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+
+        .section.active {
+            border-color: #667eea;
+            background: white;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .section-number {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
             color: #6c757d;
         }
-        .conditional-field {
+
+        .section.active .section-number {
+            background: #667eea;
+            color: white;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #343a40;
+        }
+
+        .section-subtitle {
+            color: #6c757d;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        .section-content {
             display: none;
         }
 
-        /* Add all other styles from enhanced interface */
-        /* ... existing styles ... */
+        .section.active .section-content {
+            display: block;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #343a40;
+            font-size: 0.95em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .help-text {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            background: #e9ecef;
+        }
+
+        .checkbox-item input {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .radio-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .radio-item:hover {
+            border-color: #667eea;
+        }
+
+        .radio-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .radio-item input:checked + .radio-label {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .conditional-field {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 8px;
+            border: 1px solid #ffeeba;
+        }
+
+        .conditional-field.show {
+            display: block;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .summary-panel {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .priority-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: 8px;
+        }
+
+        .priority-low { background: #28a745; }
+        .priority-medium { background: #ffc107; }
+        .priority-high { background: #fd7e14; }
+        .priority-critical { background: #dc3545; }
+
+        /* Results Section Styles */
+        .results-section {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .summary-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .recommendations-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .recommendation-card {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .recommendation-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .recommendation-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .recommendation-card li {
+            margin: 5px 0;
+            padding: 5px 0;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        /* Drag and Drop Styles */
+        .priority-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .priority-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 12px;
+            margin-bottom: 8px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: move;
+            transition: all 0.3s ease;
+        }
+
+        /* Mark items that have been moved from their original position */
+        .priority-item.changed {
+            background: #f1f3f5; /* light grey */
+            color: #6c757d;
+            opacity: 0.9;
+        }
+
+        .priority-item.changed .priority-indicator {
+            opacity: 0.4;
+        }
+
+        .priority-item:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .priority-item.dragging {
+            opacity: 0.5;
+            border: 2px dashed #667eea;
+        }
+
+        .drag-handle {
+            margin-right: 12px;
+            color: #6c757d;
+            font-size: 20px;
+            cursor: move;
+        }
+
+        .priority-item span {
+            flex: 1;
+        }
+
+        .priority-item.dragover {
+            border: 2px dashed #667eea;
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .radio-group {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+            .header,
+            .form-container {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -102,141 +481,656 @@
         </div>
 
         <div class="form-container">
-            <form id="recommendationForm" action="/recommend-comprehensive" method="POST">
-            <!-- Section 1: Data Characteristics -->
-            <div class="form-section active" id="section1">
-                <h3>Data Characteristics</h3>
-                <div class="mb-3">
-                    <label class="form-label">Primary Data Type</label>
-                    <select class="form-select" name="primary_data_type" required>
-                        <option value="pdf">PDF</option>
-                        <option value="word">Word Documents</option>
-                        <option value="text">Plain Text</option>
-                        <option value="html">HTML</option>
-                        <option value="code">Source Code</option>
-                        <option value="mixed">Mixed Content</option>
-                    </select>
-                    <div class="help-text">Select the main format of your documents</div>
+            <form id="comprehensiveForm" action="/recommend-comprehensive" method="POST">
+
+                <!-- Results Section -->
+                <div id="results" class="results-section" style="display: none;">
+                    <div class="summary-panel">
+                        <h3>Analysis Summary</h3>
+                        <div id="summaryContent"></div>
+                    </div>
+                    <div class="recommendations-panel">
+                        <h3>Recommended Pipeline Components</h3>
+                        <div id="recommendationsContent"></div>
+                    </div>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Document Complexity</label>
-                    <select class="form-select" name="document_complexity" required>
-                        <option value="simple">Simple (Plain text, basic formatting)</option>
-                        <option value="moderate">Moderate (Headers, tables, images)</option>
-                        <option value="complex">Complex (Forms, diagrams, nested structure)</option>
-                        <option value="highly_complex">Highly Complex (Legal docs, scientific papers)</option>
-                    </select>
+                <!-- Section 1: Data Characteristics -->
+                <div class="section active" id="section1">
+                    <div class="section-header" onclick="toggleSection(1)">
+                        <div class="section-number">1</div>
+                        <div>
+                            <div class="section-title">📊 Data Characteristics</div>
+                            <div class="section-subtitle">Tell us about your content and data</div>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="primaryDataType">Primary Data Type *</label>
+                                <select id="primaryDataType" name="primary_data_type" required onchange="updateConditionalFields()">
+                                    <option value="">Select primary data type</option>
+                                    <option value="pdf">PDF Documents</option>
+                                    <option value="word">Word Documents</option>
+                                    <option value="text">Plain Text Files</option>
+                                    <option value="html">HTML/Web Pages</option>
+                                    <option value="csv">CSV/Structured Data</option>
+                                    <option value="json">JSON Data</option>
+                                    <option value="xml">XML Documents</option>
+                                    <option value="email">Email Messages</option>
+                                    <option value="code">Code/Technical Documentation</option>
+                                    <option value="mixed">Mixed Formats</option>
+                                </select>
+                                <div class="help-text">Choose the format that represents the majority of your content</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="documentComplexity">Document Complexity *</label>
+                                <select id="documentComplexity" name="document_complexity" required>
+                                    <option value="">Select complexity level</option>
+                                    <option value="simple">Simple - Plain text, basic formatting</option>
+                                    <option value="moderate">Moderate - Headers, tables, some images</option>
+                                    <option value="complex">Complex - Forms, technical diagrams, layouts</option>
+                                    <option value="highly_complex">Highly Complex - Legal docs, scientific papers</option>
+                                </select>
+                                <div class="help-text">How complex are your document layouts and structures?</div>
+                            </div>
+                        </div>
+
+                        <div class="conditional-field" id="mixedFormatsField">
+                            <label>Secondary Data Types (for mixed formats)</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="secondary_data_types" value="pdf" id="secondary_pdf">
+                                    <label for="secondary_pdf">PDF</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="secondary_data_types" value="word" id="secondary_word">
+                                    <label for="secondary_word">Word</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="secondary_data_types" value="html" id="secondary_html">
+                                    <label for="secondary_html">HTML</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="secondary_data_types" value="text" id="secondary_text">
+                                    <label for="secondary_text">Text</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contentDomain">Content Domain *</label>
+                                <select id="contentDomain" name="content_domain" required onchange="updateConditionalFields()">
+                                    <option value="">Select domain</option>
+                                    <option value="general">General Business Content</option>
+                                    <option value="legal">Legal Documents</option>
+                                    <option value="medical">Medical/Healthcare</option>
+                                    <option value="financial">Financial/Accounting</option>
+                                    <option value="technical">Technical Documentation</option>
+                                    <option value="academic">Academic/Research</option>
+                                    <option value="customer_support">Customer Support</option>
+                                    <option value="hr_policies">HR/Policies</option>
+                                    <option value="marketing">Marketing Content</option>
+                                    <option value="compliance">Compliance/Regulatory</option>
+                                </select>
+                                <div class="help-text">Domain affects model selection and accuracy optimization</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="currentVolume">Current Data Volume *</label>
+                                <select id="currentVolume" name="current_volume" required>
+                                    <option value="">Select volume</option>
+                                    <option value="tiny">Tiny - Less than 100 documents</option>
+                                    <option value="small">Small - 100 to 1,000 documents</option>
+                                    <option value="medium">Medium - 1,000 to 10,000 documents</option>
+                                    <option value="large">Large - 10,000 to 100,000 documents</option>
+                                    <option value="very_large">Very Large - 100,000 to 1M documents</option>
+                                    <option value="massive">Massive - Over 1M documents</option>
+                                </select>
+                                <div class="help-text">Current size of your document collection</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="averageDocLength">Average Document Length</label>
+                                <select id="averageDocLength" name="average_document_length">
+                                    <option value="short">Short - 1-5 pages</option>
+                                    <option value="medium" selected>Medium - 5-20 pages</option>
+                                    <option value="long">Long - 20+ pages</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="updateFrequency">Update Frequency *</label>
+                                <select id="updateFrequency" name="update_frequency" required>
+                                    <option value="static" selected>Static - One-time ingestion</option>
+                                    <option value="weekly">Weekly updates</option>
+                                    <option value="daily">Daily updates</option>
+                                    <option value="hourly">Hourly updates</option>
+                                    <option value="real_time">Real-time streaming</option>
+                                    <option value="event_driven">Event-driven updates</option>
+                                </select>
+                                <div class="help-text">How often does your data change?</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="languageRequirements">Language Requirements *</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="language_requirements" value="english" id="lang_english" checked>
+                                    <label for="lang_english">English</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="language_requirements" value="spanish" id="lang_spanish">
+                                    <label for="lang_spanish">Spanish</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="language_requirements" value="french" id="lang_french">
+                                    <label for="lang_french">French</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="language_requirements" value="german" id="lang_german">
+                                    <label for="lang_german">German</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="language_requirements" value="chinese" id="lang_chinese">
+                                    <label for="lang_chinese">Chinese</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="language_requirements" value="japanese" id="lang_japanese">
+                                    <label for="lang_japanese">Japanese</label>
+                                </div>
+                            </div>
+                            <div class="help-text">Select all languages your content includes</div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expectedGrowthRate">Expected Growth Rate</label>
+                                <input type="text" id="expectedGrowthRate" name="expected_growth_rate" 
+                                       placeholder="e.g., 10% monthly, 50% yearly" value="10% monthly">
+                                <div class="help-text">How fast do you expect your data to grow?</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="metadataImportance">Metadata Importance</label>
+                                <select id="metadataImportance" name="metadata_importance">
+                                    <option value="low">Low - Basic file info sufficient</option>
+                                    <option value="medium" selected>Medium - Some metadata helpful</option>
+                                    <option value="high">High - Rich metadata important</option>
+                                    <option value="critical">Critical - Metadata essential</option>
+                                </select>
+                                <div class="help-text">How important is preserving document metadata?</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Content Domain</label>
-                    <select class="form-select" name="content_domain" required>
-                        <option value="general">General</option>
-                        <option value="legal">Legal</option>
-                        <option value="medical">Medical</option>
-                        <option value="financial">Financial</option>
-                        <option value="technical">Technical</option>
-                    </select>
+                <!-- Section 2: Use Case Requirements -->
+                <div class="section" id="section2">
+                    <div class="section-header" onclick="toggleSection(2)">
+                        <div class="section-number">2</div>
+                        <div>
+                            <div class="section-title">🎯 Use Case Requirements</div>
+                            <div class="section-subtitle">How will users interact with your system?</div>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="primaryUseCase">Primary Use Case *</label>
+                                <select id="primaryUseCase" name="primary_use_case" required>
+                                    <option value="">Select primary use case</option>
+                                    <option value="question_answering">Question & Answer System</option>
+                                    <option value="semantic_search">Semantic Search</option>
+                                    <option value="document_summarization">Document Summarization</option>
+                                    <option value="conversational_ai">Conversational AI/Chatbot</option>
+                                    <option value="content_analysis">Content Analysis</option>
+                                    <option value="compliance_checking">Compliance Checking</option>
+                                    <option value="research_assistance">Research Assistance</option>
+                                    <option value="knowledge_discovery">Knowledge Discovery</option>
+                                </select>
+                                <div class="help-text">What is the main way users will interact with your system?</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="queryComplexity">Expected Query Complexity *</label>
+                                <select id="queryComplexity" name="expected_query_complexity" required>
+                                    <option value="">Select complexity</option>
+                                    <option value="simple_factual">Simple Factual - "What is X?"</option>
+                                    <option value="multi_step">Multi-Step - "How does X relate to Y?"</option>
+                                    <option value="analytical">Analytical - "What trends do you see in...?"</option>
+                                    <option value="comparative">Comparative - "Compare X and Y"</option>
+                                    <option value="procedural">Procedural - "How do I do X?"</option>
+                                    <option value="interpretive">Interpretive - "What does this mean?"</option>
+                                </select>
+                                <div class="help-text">How complex are the questions users will ask?</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="accuracyTolerance">Accuracy Tolerance *</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="accuracy_tolerance" value="high_tolerance" id="acc_high">
+                                        <div class="radio-label">High Tolerance<br><small>Some errors acceptable</small></div>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="accuracy_tolerance" value="moderate_tolerance" id="acc_moderate" checked>
+                                        <div class="radio-label">Moderate Tolerance<br><small>Errors should be rare</small></div>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="accuracy_tolerance" value="low_tolerance" id="acc_low">
+                                        <div class="radio-label">Low Tolerance<br><small>Errors problematic</small></div>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="accuracy_tolerance" value="zero_tolerance" id="acc_zero">
+                                        <div class="radio-label">Zero Tolerance<br><small>Critical accuracy required</small></div>
+                                    </div>
+                                </div>
+                                <div class="help-text">How critical is response accuracy for your use case?</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="latencyRequirement">Response Time Requirements *</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="latency_requirement" value="real_time" id="lat_realtime">
+                                        <div class="radio-label">Real-time<br><small>&lt;1 second</small></div>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="latency_requirement" value="interactive" id="lat_interactive" checked>
+                                        <div class="radio-label">Interactive<br><small>1-3 seconds</small></div>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="latency_requirement" value="responsive" id="lat_responsive">
+                                        <div class="radio-label">Responsive<br><small>3-10 seconds</small></div>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="latency_requirement" value="batch_acceptable" id="lat_batch">
+                                        <div class="radio-label">Batch Acceptable<br><small>10+ seconds</small></div>
+                                    </div>
+                                </div>
+                                <div class="help-text">How fast should the system respond to user queries?</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="preferredResponseType">Preferred Response Type</label>
+                                <select id="preferredResponseType" name="preferred_response_type">
+                                    <option value="brief_answers">Brief Answers - 1-2 sentences</option>
+                                    <option value="detailed_explanations" selected>Detailed Explanations - Paragraphs</option>
+                                    <option value="structured_summaries">Structured Summaries - Bullet points</option>
+                                    <option value="conversational">Conversational - Chat-like responses</option>
+                                    <option value="citation_heavy">Citation Heavy - Lots of references</option>
+                                </select>
+                                <div class="help-text">What style of response do users prefer?</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="citationRequirements">Citation Requirements</label>
+                                <select id="citationRequirements" name="citation_requirements">
+                                    <option value="not_needed">Not Needed - No source references</option>
+                                    <option value="helpful" selected>Helpful - Basic source info</option>
+                                    <option value="required">Required - Detailed citations</option>
+                                    <option value="mandatory">Mandatory - Must have sources</option>
+                                </select>
+                                <div class="help-text">Do responses need to include source references?</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expectedQueriesPerDay">Expected Queries Per Day</label>
+                                <select id="expectedQueriesPerDay" name="expected_queries_per_day">
+                                    <option value="1-100">1-100 queries</option>
+                                    <option value="100-1000" selected>100-1,000 queries</option>
+                                    <option value="1000-10000">1,000-10,000 queries</option>
+                                    <option value="10000+">10,000+ queries</option>
+                                </select>
+                                <div class="help-text">Rough estimate of daily query volume</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="concurrentUsers">Peak Concurrent Users</label>
+                                <select id="concurrentUsers" name="concurrent_users">
+                                    <option value="1-10" selected>1-10 users</option>
+                                    <option value="10-50">10-50 users</option>
+                                    <option value="50-200">50-200 users</option>
+                                    <option value="200+">200+ users</option>
+                                </select>
+                                <div class="help-text">Maximum number of simultaneous users</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <button type="button" class="btn btn-primary" onclick="nextSection(1)">Next</button>
-            </div>
+                <!-- Section 3: Business Context -->
+                <div class="section" id="section3">
+                    <div class="section-header" onclick="toggleSection(3)">
+                        <div class="section-number">3</div>
+                        <div>
+                            <div class="section-title">🏢 Business Context</div>
+                            <div class="section-subtitle">Business requirements and constraints</div>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="budgetRange">Monthly Budget Range *</label>
+                                <select id="budgetRange" name="budget_range" required>
+                                    <option value="">Select budget range</option>
+                                    <option value="minimal">Minimal - Under $100/month</option>
+                                    <option value="low">Low - $100-500/month</option>
+                                    <option value="moderate">Moderate - $500-2,000/month</option>
+                                    <option value="high">High - $2,000-10,000/month</option>
+                                    <option value="unlimited">Unlimited - Cost not a constraint</option>
+                                </select>
+                                <div class="help-text">What's your expected monthly operational budget?</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="teamExpertise">Team Technical Expertise *</label>
+                                <select id="teamExpertise" name="team_expertise" required>
+                                    <option value="">Select expertise level</option>
+                                    <option value="non_technical">Non-Technical - Business users only</option>
+                                    <option value="basic_technical">Basic Technical - Some IT background</option>
+                                    <option value="intermediate">Intermediate - Software developers</option>
+                                    <option value="advanced">Advanced - ML engineers</option>
+                                    <option value="expert">Expert - AI/ML specialists</option>
+                                </select>
+                                <div class="help-text">What's your team's technical capability?</div>
+                            </div>
+                        </div>
 
-            <!-- Section 2: Use Case Requirements -->
-            <div class="form-section" id="section2">
-                <h3>Use Case Requirements</h3>
-                <div class="mb-3">
-                    <label class="form-label">Primary Use Case</label>
-                    <select class="form-select" name="primary_use_case" required>
-                        <option value="question_answering">Question Answering</option>
-                        <option value="semantic_search">Semantic Search</option>
-                        <option value="document_summarization">Document Summarization</option>
-                        <option value="conversational_ai">Conversational AI</option>
-                    </select>
+                        <div class="form-group">
+                            <label>Regulatory Requirements</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="regulatory_requirements" value="GDPR" id="reg_gdpr">
+                                    <label for="reg_gdpr">GDPR</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="regulatory_requirements" value="HIPAA" id="reg_hipaa">
+                                    <label for="reg_hipaa">HIPAA</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="regulatory_requirements" value="SOX" id="reg_sox">
+                                    <label for="reg_sox">SOX</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="regulatory_requirements" value="PCI_DSS" id="reg_pci">
+                                    <label for="reg_pci">PCI DSS</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="regulatory_requirements" value="ISO_27001" id="reg_iso">
+                                    <label for="reg_iso">ISO 27001</label>
+                                </div>
+                            </div>
+                            <div class="help-text">Select any compliance requirements that apply</div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dataSensitivityLevel">Data Sensitivity Level *</label>
+                                <select id="dataSensitivityLevel" name="data_sensitivity_level" required>
+                                    <option value="">Select sensitivity</option>
+                                    <option value="public">Public - No restrictions</option>
+                                    <option value="internal">Internal - Company confidential</option>
+                                    <option value="confidential">Confidential - Restricted access</option>
+                                    <option value="restricted">Restricted - Highly sensitive</option>
+                                </select>
+                                <div class="help-text">What's the sensitivity level of your data?</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="maintenanceCapability">Maintenance Capability</label>
+                                <select id="maintenanceCapability" name="maintenance_capability">
+                                    <option value="minimal">Minimal - Prefer fully managed</option>
+                                    <option value="moderate" selected>Moderate - Basic maintenance OK</option>
+                                    <option value="extensive">Extensive - Full control preferred</option>
+                                </select>
+                                <div class="help-text">How much system maintenance can your team handle?</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="industryDomain">Industry Domain</label>
+                            <input type="text" id="industryDomain" name="industry_domain" 
+                                   placeholder="e.g., Healthcare, Legal Services, Financial Services">
+                            <div class="help-text">What industry does your organization operate in?</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Integration Requirements</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="integration_requirements" value="CRM" id="int_crm">
+                                    <label for="int_crm">CRM System</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="integration_requirements" value="ERP" id="int_erp">
+                                    <label for="int_erp">ERP System</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="integration_requirements" value="Active_Directory" id="int_ad">
+                                    <label for="int_ad">Active Directory</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="integration_requirements" value="Slack" id="int_slack">
+                                    <label for="int_slack">Slack</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="integration_requirements" value="Teams" id="int_teams">
+                                    <label for="int_teams">Microsoft Teams</label>
+                                </div>
+                            </div>
+                            <div class="help-text">What systems need to integrate with the RAG system?</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Accuracy Tolerance</label>
-                    <select class="form-select" name="accuracy_tolerance" required>
-                        <option value="high_tolerance">High Tolerance (Some errors acceptable)</option>
-                        <option value="moderate_tolerance">Moderate Tolerance</option>
-                        <option value="low_tolerance">Low Tolerance</option>
-                        <option value="zero_tolerance">Zero Tolerance (Critical accuracy required)</option>
-                    </select>
+                <!-- Section 4: Technical Preferences -->
+                <div class="section" id="section4">
+                    <div class="section-header" onclick="toggleSection(4)">
+                        <div class="section-number">4</div>
+                        <div>
+                            <div class="section-title">⚙️ Technical Preferences</div>
+                            <div class="section-subtitle">Infrastructure and deployment preferences</div>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="deploymentPreference">Deployment Preference *</label>
+                                <select id="deploymentPreference" name="deployment_preference" required>
+                                    <option value="">Select deployment option</option>
+                                    <option value="on_premises">On-Premises - Full control, own hardware</option>
+                                    <option value="managed_services">Managed Services - Cloud APIs, less control</option>
+                                    <option value="hybrid">Hybrid - Mix of on-premises and cloud</option>
+                                    <option value="flexible" selected>Flexible - Best option for requirements</option>
+                                </select>
+                                <div class="help-text">Where would you prefer to deploy the system?</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="scalabilityRequirements">Scalability Requirements</label>
+                                <select id="scalabilityRequirements" name="scalability_requirements">
+                                    <option value="minimal">Minimal - Current size sufficient</option>
+                                    <option value="moderate" selected>Moderate - Some growth expected</option>
+                                    <option value="high">High - Significant growth planned</option>
+                                    <option value="extreme">Extreme - Massive scale requirements</option>
+                                </select>
+                                <div class="help-text">How much should the system be able to scale?</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="monitoringDepth">Monitoring Requirements</label>
+                                <select id="monitoringDepth" name="monitoring_depth">
+                                    <option value="minimal">Minimal - Basic health checks</option>
+                                    <option value="standard" selected>Standard - Performance monitoring</option>
+                                    <option value="comprehensive">Comprehensive - Detailed analytics</option>
+                                </select>
+                                <div class="help-text">What level of monitoring do you need?</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="customizationImportance">Customization Importance</label>
+                                <select id="customizationImportance" name="customization_importance">
+                                    <option value="low">Low - Standard solutions fine</option>
+                                    <option value="moderate" selected>Moderate - Some customization helpful</option>
+                                    <option value="high">High - Extensive customization needed</option>
+                                </select>
+                                <div class="help-text">How important is the ability to customize the system?</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additionalContext">Additional Context</label>
+                            <textarea id="additionalContext" name="additional_context" rows="4" 
+                                      placeholder="Any unique requirements, constraints, or context we should know about?"></textarea>
+                            <div class="help-text">Share any additional information that might influence our recommendations</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Priority Ranking</label>
+                            <div class="help-text" style="margin-bottom: 10px;">Drag to reorder by priority (most important first):</div>
+                            <div id="priorityList" class="priority-list">
+                                <div class="priority-item" data-priority="accuracy" draggable="true">
+                                    <span class="drag-handle">☰</span>
+                                    <span>🎯 Accuracy</span>
+                                    <div class="priority-indicator priority-high"></div>
+                                </div>
+                                <div class="priority-item" data-priority="cost" draggable="true">
+                                    <span class="drag-handle">☰</span>
+                                    <span>💰 Cost</span>
+                                    <div class="priority-indicator priority-medium"></div>
+                                </div>
+                                <div class="priority-item" data-priority="speed" draggable="true">
+                                    <span class="drag-handle">☰</span>
+                                    <span>⚡ Speed</span>
+                                    <div class="priority-indicator priority-medium"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <button type="button" class="btn btn-secondary" onclick="previousSection(2)">Previous</button>
-                <button type="button" class="btn btn-primary" onclick="nextSection(2)">Next</button>
-            </div>
-
-            <!-- Section 3: Business Context -->
-            <div class="form-section" id="section3">
-                <h3>Business Context</h3>
-                <div class="mb-3">
-                    <label class="form-label">Budget Range</label>
-                    <select class="form-select" name="budget_range" required>
-                        <option value="minimal">Minimal (&lt;$100/month)</option>
-                        <option value="low">Low ($100-500/month)</option>
-                        <option value="moderate">Moderate ($500-2000/month)</option>
-                        <option value="high">High ($2000-10000/month)</option>
-                        <option value="unlimited">Unlimited (&gt;$10000/month)</option>
-                    </select>
+                <div class="navigation">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" onclick="previousSection()" disabled>
+                        ← Previous
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextSection()">
+                        Next →
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn" style="display:none;">
+                        🎯 Get My Recommendations
+                    </button>
                 </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Team Expertise</label>
-                    <select class="form-select" name="team_expertise" required>
-                        <option value="non_technical">Non-Technical (Business users only)</option>
-                        <option value="basic_technical">Basic Technical (Some IT background)</option>
-                        <option value="intermediate">Intermediate (Software developers)</option>
-                        <option value="advanced">Advanced (ML engineers)</option>
-                        <option value="expert">Expert (AI/ML specialists)</option>
-                    </select>
-                </div>
-
-                <button type="button" class="btn btn-secondary" onclick="previousSection(3)">Previous</button>
-                <button type="button" class="btn btn-primary" onclick="nextSection(3)">Next</button>
-            </div>
-
-            <!-- Section 4: Technical Preferences -->
-            <div class="form-section" id="section4">
-                <h3>Technical Preferences</h3>
-                <div class="mb-3">
-                    <label class="form-label">Deployment Preference</label>
-                    <select class="form-select" name="deployment_preference" required>
-                        <option value="flexible">Flexible</option>
-                        <option value="on_premises">On-Premises</option>
-                        <option value="managed_services">Managed Services</option>
-                        <option value="hybrid">Hybrid</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Scalability Requirements</label>
-                    <select class="form-select" name="scalability_requirements" required>
-                        <option value="minimal">Minimal</option>
-                        <option value="moderate">Moderate</option>
-                        <option value="high">High</option>
-                        <option value="extreme">Extreme</option>
-                    </select>
-                </div>
-
-                <button type="button" class="btn btn-secondary" onclick="previousSection(4)">Previous</button>
-                <button type="submit" class="btn btn-success">Get Recommendations</button>
-            </div>
-        </form>
-
-        <!-- Results Section -->
-        <div id="results" style="display: none;" class="mt-4">
-            <h3>Recommendations</h3>
-            <div id="recommendationsContent"></div>
+            </form>
         </div>
     </div>
 
     <script>
         let currentSection = 1;
         const totalSections = 4;
+        let dragSrcElement = null;
+
+        // Drag and Drop functionality
+        function handleDragStart(e) {
+            this.classList.add('dragging');
+            dragSrcElement = this;
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', this.outerHTML);
+        }
+
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            this.classList.add('dragover');
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+
+        function handleDragEnter(e) {
+            this.classList.add('dragover');
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('dragover');
+        }
+
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+
+            if (dragSrcElement !== this) {
+                this.parentNode.removeChild(dragSrcElement);
+                const dropHTML = e.dataTransfer.getData('text/html');
+                this.insertAdjacentHTML('beforebegin', dropHTML);
+                const dropElem = this.previousSibling;
+                addDragHandlers(dropElem);
+            }
+            this.classList.remove('dragover');
+            updatePriorityInputs();
+            return false;
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            document.querySelectorAll('.priority-item').forEach(item => {
+                item.classList.remove('dragover');
+            });
+        }
+
+        function addDragHandlers(elem) {
+            elem.addEventListener('dragstart', handleDragStart, false);
+            elem.addEventListener('dragenter', handleDragEnter, false);
+            elem.addEventListener('dragover', handleDragOver, false);
+            elem.addEventListener('dragleave', handleDragLeave, false);
+            elem.addEventListener('drop', handleDrop, false);
+            elem.addEventListener('dragend', handleDragEnd, false);
+        }
+
+        function updatePriorityInputs() {
+            const priorityInputs = [];
+            document.querySelectorAll('.priority-item').forEach((item, idx) => {
+                priorityInputs.push(item.getAttribute('data-priority'));
+                // Mark items that have moved compared to initial order
+                if (window.__initialPriorityOrder) {
+                    const origIndex = window.__initialPriorityOrder.indexOf(item.getAttribute('data-priority'));
+                    if (origIndex !== idx) {
+                        item.classList.add('changed');
+                    } else {
+                        item.classList.remove('changed');
+                    }
+                }
+            });
+
+            // Ensure a hidden input exists to submit the ordering
+            let orderInput = document.getElementById('priority_order_input');
+            if (!orderInput) {
+                orderInput = document.createElement('input');
+                orderInput.type = 'hidden';
+                orderInput.name = 'priority_order';
+                orderInput.id = 'priority_order_input';
+                document.getElementById('comprehensiveForm').appendChild(orderInput);
+            }
+            orderInput.value = JSON.stringify(priorityInputs);
+        }
+
+        function initializeDragAndDrop() {
+            const items = document.querySelectorAll('.priority-item');
+            items.forEach(item => {
+                addDragHandlers(item);
+            });
+
+            // Save initial order for change detection
+            window.__initialPriorityOrder = Array.from(items).map(i => i.getAttribute('data-priority'));
+            // Initialize hidden input with initial order
+            updatePriorityInputs();
+        }
 
         function toggleSection(sectionNum) {
             // Don't allow jumping ahead
@@ -255,153 +1149,199 @@
 
         function nextSection() {
             if (currentSection < totalSections && validateCurrentSection()) {
-                toggleSection(currentSection + 1);
+                currentSection++;
+                toggleSection(currentSection);
             }
         }
 
         function previousSection() {
             if (currentSection > 1) {
-                toggleSection(currentSection - 1);
+                currentSection--;
+                toggleSection(currentSection);
             }
         }
 
         function updateProgress() {
-            const progress = (currentSection / totalSections) * 100;
-            document.getElementById('progressFill').style.width = `${progress}%`;
-            document.getElementById('progressText').textContent = `Section ${currentSection} of ${totalSections}`;
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+
+            const percentage = (currentSection / totalSections) * 100;
+            progressFill.style.width = percentage + '%';
+
+            const sectionNames = [
+                'Data Characteristics',
+                'Use Case Requirements', 
+                'Business Context',
+                'Technical Preferences'
+            ];
+
+            progressText.textContent = `Section ${currentSection} of ${totalSections}: ${sectionNames[currentSection - 1]}`;
         }
 
         function updateNavigation() {
-            const prevButton = document.getElementById('prevButton');
-            const nextButton = document.getElementById('nextButton');
-            const submitButton = document.getElementById('submitButton');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
 
-            prevButton.style.display = currentSection > 1 ? 'block' : 'none';
+            prevBtn.disabled = currentSection === 1;
+
             if (currentSection === totalSections) {
-                nextButton.style.display = 'none';
-                submitButton.style.display = 'block';
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'inline-block';
             } else {
-                nextButton.style.display = 'block';
-                submitButton.style.display = 'none';
+                nextBtn.style.display = 'inline-block';
+                submitBtn.style.display = 'none';
             }
         }
 
         function validateCurrentSection() {
-            const currentForm = document.getElementById(`section${currentSection}`);
-            const requiredFields = currentForm.querySelectorAll('[required]');
-            
-            let isValid = true;
-            requiredFields.forEach(field => {
-                if (!field.value) {
-                    field.style.borderColor = '#dc3545';
-                    isValid = false;
-                } else {
-                    field.style.borderColor = '#e9ecef';
-                }
-            });
+            const section = document.getElementById(`section${currentSection}`);
+            const requiredFields = section.querySelectorAll('input[required], select[required]');
 
-            return isValid;
+            for (let field of requiredFields) {
+                if (!field.value.trim()) {
+                    field.focus();
+                    alert(`Please fill in the required field: ${field.previousElementSibling.textContent}`);
+                    return false;
+                }
+            }
+            return true;
         }
 
         function updateConditionalFields() {
-            // Show/hide mixed formats field
+            // Show/hide secondary data types for mixed formats
+            const primaryDataType = document.getElementById('primaryDataType').value;
             const mixedFormatsField = document.getElementById('mixedFormatsField');
-            const primaryDataType = document.getElementById('primaryDataType');
-            
-            if (mixedFormatsField) {
-                mixedFormatsField.style.display = primaryDataType.value === 'mixed' ? 'block' : 'none';
+
+            if (primaryDataType === 'mixed') {
+                mixedFormatsField.classList.add('show');
+            } else {
+                mixedFormatsField.classList.remove('show');
             }
         }
 
-        document.getElementById('recommendationForm').addEventListener('submit', async (e) => {
+        // Form submission
+        document.getElementById('comprehensiveForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
+
+            if (!validateCurrentSection()) {
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.textContent = '🔄 Analyzing your requirements...';
+            submitBtn.disabled = true;
 
             try {
-                const response = await fetch('/recommend-comprehensive', {
+                // Collect form data
+                const formData = new FormData(e.target);
+                const data = {};
+
+                // Handle regular fields
+                for (let [key, value] of formData.entries()) {
+                    if (data[key]) {
+                        if (Array.isArray(data[key])) {
+                            data[key].push(value);
+                        } else {
+                            data[key] = [data[key], value];
+                        }
+                    } else {
+                        data[key] = value;
+                    }
+                }
+
+                // Handle checkboxes that might not be checked
+                const checkboxGroups = ['secondary_data_types', 'language_requirements', 'regulatory_requirements', 'integration_requirements'];
+                checkboxGroups.forEach(group => {
+                    if (!data[group]) {
+                        data[group] = [];
+                    } else if (!Array.isArray(data[group])) {
+                        data[group] = [data[group]];
+                    }
+                });
+
+                console.log('Submitting data:', data);
+
+                // Make API call
+                const apiBase = 'http://127.0.0.1:8000';  // Always use full URL
+                console.log('Submitting to API:', apiBase + '/api/v1/recommend-comprehensive');
+                
+                const response = await fetch(`${apiBase}/api/v1/recommend-comprehensive`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify(data)
                 });
 
-                const result = await response.json();
-                displayResults(result);
+                const responseData = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(responseData.detail || `HTTP error! status: ${response.status}`);
+                }
+
+                // Display results in the results section
+                const resultsSection = document.getElementById('results');
+                resultsSection.innerHTML = `
+                    <h2>🎯 Your Recommendations</h2>
+                    <div class="summary-panel">
+                        <h3>Analysis Summary</h3>
+                        ${Object.entries(responseData.requirements_analysis || {}).map(([key, value]) => `
+                            <div class="summary-item">
+                                <strong>${key}:</strong> ${value}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="recommendations-panel">
+                        <h3>Recommended Pipelines</h3>
+                        ${responseData.ingestion_pipelines.map(pipeline => `
+                            <div class="recommendation-card">
+                                <h4>${pipeline.name}</h4>
+                                <p>${pipeline.description}</p>
+                                <strong>When to use:</strong> ${pipeline.when_to_use}
+                                <h5>Components:</h5>
+                                <ul>
+                                    <li>Chunking: ${pipeline.chunking.name}</li>
+                                    <li>Embedding: ${pipeline.embedding.name}</li>
+                                    <li>Vector DB: ${pipeline.vector_db.name}</li>
+                                </ul>
+                                <p><strong>Trade-offs:</strong> ${pipeline.trade_offs.join(', ')}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                // Show results section
+                resultsSection.style.display = 'block';
+                
+                // Scroll to results
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+
             } catch (error) {
                 console.error('Error:', error);
-                alert('Error getting recommendations. Please try again.');
+                let errorMessage = error.message;
+                
+                // Try to parse the error response if it's a JSON string
+                if (errorMessage.includes('{') && errorMessage.includes('}')) {
+                    try {
+                        const errorData = JSON.parse(errorMessage);
+                        errorMessage = errorData.detail || errorMessage;
+                    } catch (e) {
+                        // Keep original error message if JSON parsing fails
+                    }
+                }
+                
+                alert('Error generating recommendations: ' + errorMessage);
+                submitBtn.textContent = '🎯 Get My Recommendations';
+                submitBtn.disabled = false;
             }
         });
 
-        function displayResults(results) {
-            const resultsDiv = document.getElementById('results');
-            const content = document.getElementById('recommendationsContent');
-            
-            let html = `
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h4>Analysis Summary</h4>
-                    </div>
-                    <div class="card-body">
-                        <p><strong>Requirements Analysis:</strong></p>
-                        <ul>
-                            ${Object.entries(results.requirements_analysis).map(([key, value]) => 
-                                `<li><strong>${key}:</strong> ${value}</li>`
-                            ).join('')}
-                        </ul>
-                    </div>
-                </div>
-            `;
-
-            // Display Ingestion Pipelines
-            html += `
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h4>Recommended Ingestion Pipelines</h4>
-                    </div>
-                    <div class="card-body">
-                        ${results.ingestion_pipelines.map(pipeline => `
-                            <div class="mb-3">
-                                <h5>${pipeline.name}</h5>
-                                <p>${pipeline.description}</p>
-                                <p><strong>When to use:</strong> ${pipeline.when_to_use}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-
-            // Display RAG Pipelines
-            html += `
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h4>Recommended RAG Pipelines</h4>
-                    </div>
-                    <div class="card-body">
-                        ${results.rag_pipelines.map(pipeline => `
-                            <div class="mb-3">
-                                <h5>${pipeline.name}</h5>
-                                <p>${pipeline.description}</p>
-                                <p><strong>When to use:</strong> ${pipeline.when_to_use}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-
-            content.innerHTML = html;
-            resultsDiv.style.display = 'block';
-            resultsDiv.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Initialize form state
-        document.addEventListener('DOMContentLoaded', function() {
-            updateProgress();
-            updateNavigation();
-            updateConditionalFields();
-        });
+        // Initialize
+        updateProgress();
+        updateNavigation();
+        initializeDragAndDrop();
     </script>
 </body>
 </html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Pipeline Recommender - Comprehensive Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .progress-container {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 25%;
+            transition: width 0.3s ease;
+        }
+
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+        }
+        .help-text {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+        .conditional-field {
+            display: none;
+        }
+
+        /* Add all other styles from enhanced interface */
+        /* ... existing styles ... */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 RAG Pipeline Recommender</h1>
+            <p>Get intelligent, expert-level recommendations for your RAG and embedding pipelines based on comprehensive business analysis</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Section 1 of 4: Data Characteristics</div>
+        </div>
+
+        <div class="form-container">
+            <form id="recommendationForm" action="/recommend-comprehensive" method="POST">
+            <!-- Section 1: Data Characteristics -->
+            <div class="form-section active" id="section1">
+                <h3>Data Characteristics</h3>
+                <div class="mb-3">
+                    <label class="form-label">Primary Data Type</label>
+                    <select class="form-select" name="primary_data_type" required>
+                        <option value="pdf">PDF</option>
+                        <option value="word">Word Documents</option>
+                        <option value="text">Plain Text</option>
+                        <option value="html">HTML</option>
+                        <option value="code">Source Code</option>
+                        <option value="mixed">Mixed Content</option>
+                    </select>
+                    <div class="help-text">Select the main format of your documents</div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Document Complexity</label>
+                    <select class="form-select" name="document_complexity" required>
+                        <option value="simple">Simple (Plain text, basic formatting)</option>
+                        <option value="moderate">Moderate (Headers, tables, images)</option>
+                        <option value="complex">Complex (Forms, diagrams, nested structure)</option>
+                        <option value="highly_complex">Highly Complex (Legal docs, scientific papers)</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Content Domain</label>
+                    <select class="form-select" name="content_domain" required>
+                        <option value="general">General</option>
+                        <option value="legal">Legal</option>
+                        <option value="medical">Medical</option>
+                        <option value="financial">Financial</option>
+                        <option value="technical">Technical</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-primary" onclick="nextSection(1)">Next</button>
+            </div>
+
+            <!-- Section 2: Use Case Requirements -->
+            <div class="form-section" id="section2">
+                <h3>Use Case Requirements</h3>
+                <div class="mb-3">
+                    <label class="form-label">Primary Use Case</label>
+                    <select class="form-select" name="primary_use_case" required>
+                        <option value="question_answering">Question Answering</option>
+                        <option value="semantic_search">Semantic Search</option>
+                        <option value="document_summarization">Document Summarization</option>
+                        <option value="conversational_ai">Conversational AI</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Accuracy Tolerance</label>
+                    <select class="form-select" name="accuracy_tolerance" required>
+                        <option value="high_tolerance">High Tolerance (Some errors acceptable)</option>
+                        <option value="moderate_tolerance">Moderate Tolerance</option>
+                        <option value="low_tolerance">Low Tolerance</option>
+                        <option value="zero_tolerance">Zero Tolerance (Critical accuracy required)</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-secondary" onclick="previousSection(2)">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="nextSection(2)">Next</button>
+            </div>
+
+            <!-- Section 3: Business Context -->
+            <div class="form-section" id="section3">
+                <h3>Business Context</h3>
+                <div class="mb-3">
+                    <label class="form-label">Budget Range</label>
+                    <select class="form-select" name="budget_range" required>
+                        <option value="minimal">Minimal (&lt;$100/month)</option>
+                        <option value="low">Low ($100-500/month)</option>
+                        <option value="moderate">Moderate ($500-2000/month)</option>
+                        <option value="high">High ($2000-10000/month)</option>
+                        <option value="unlimited">Unlimited (&gt;$10000/month)</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Team Expertise</label>
+                    <select class="form-select" name="team_expertise" required>
+                        <option value="non_technical">Non-Technical (Business users only)</option>
+                        <option value="basic_technical">Basic Technical (Some IT background)</option>
+                        <option value="intermediate">Intermediate (Software developers)</option>
+                        <option value="advanced">Advanced (ML engineers)</option>
+                        <option value="expert">Expert (AI/ML specialists)</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-secondary" onclick="previousSection(3)">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="nextSection(3)">Next</button>
+            </div>
+
+            <!-- Section 4: Technical Preferences -->
+            <div class="form-section" id="section4">
+                <h3>Technical Preferences</h3>
+                <div class="mb-3">
+                    <label class="form-label">Deployment Preference</label>
+                    <select class="form-select" name="deployment_preference" required>
+                        <option value="flexible">Flexible</option>
+                        <option value="on_premises">On-Premises</option>
+                        <option value="managed_services">Managed Services</option>
+                        <option value="hybrid">Hybrid</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Scalability Requirements</label>
+                    <select class="form-select" name="scalability_requirements" required>
+                        <option value="minimal">Minimal</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="high">High</option>
+                        <option value="extreme">Extreme</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-secondary" onclick="previousSection(4)">Previous</button>
+                <button type="submit" class="btn btn-success">Get Recommendations</button>
+            </div>
+        </form>
+
+        <!-- Results Section -->
+        <div id="results" style="display: none;" class="mt-4">
+            <h3>Recommendations</h3>
+            <div id="recommendationsContent"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentSection = 1;
+        const totalSections = 4;
+
+        function toggleSection(sectionNum) {
+            // Don't allow jumping ahead
+            if (sectionNum > currentSection + 1) return;
+
+            // Remove active class from all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+
+            // Add active class to clicked section
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+
+            currentSection = sectionNum;
+            updateProgress();
+            updateNavigation();
+        }
+
+        function nextSection() {
+            if (currentSection < totalSections && validateCurrentSection()) {
+                toggleSection(currentSection + 1);
+            }
+        }
+
+        function previousSection() {
+            if (currentSection > 1) {
+                toggleSection(currentSection - 1);
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentSection / totalSections) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `Section ${currentSection} of ${totalSections}`;
+        }
+
+        function updateNavigation() {
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const submitButton = document.getElementById('submitButton');
+
+            prevButton.style.display = currentSection > 1 ? 'block' : 'none';
+            if (currentSection === totalSections) {
+                nextButton.style.display = 'none';
+                submitButton.style.display = 'block';
+            } else {
+                nextButton.style.display = 'block';
+                submitButton.style.display = 'none';
+            }
+        }
+
+        function validateCurrentSection() {
+            const currentForm = document.getElementById(`section${currentSection}`);
+            const requiredFields = currentForm.querySelectorAll('[required]');
+            
+            let isValid = true;
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    field.style.borderColor = '#dc3545';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#e9ecef';
+                }
+            });
+
+            return isValid;
+        }
+
+        function updateConditionalFields() {
+            // Show/hide mixed formats field
+            const mixedFormatsField = document.getElementById('mixedFormatsField');
+            const primaryDataType = document.getElementById('primaryDataType');
+            
+            if (mixedFormatsField) {
+                mixedFormatsField.style.display = primaryDataType.value === 'mixed' ? 'block' : 'none';
+            }
+        }
+
+        document.getElementById('recommendationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+
+            try {
+                const response = await fetch('/recommend-comprehensive', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                displayResults(result);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error getting recommendations. Please try again.');
+            }
+        });
+
+        function displayResults(results) {
+            const resultsDiv = document.getElementById('results');
+            const content = document.getElementById('recommendationsContent');
+            
+            let html = `
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Analysis Summary</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Requirements Analysis:</strong></p>
+                        <ul>
+                            ${Object.entries(results.requirements_analysis).map(([key, value]) => 
+                                `<li><strong>${key}:</strong> ${value}</li>`
+                            ).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+
+            // Display Ingestion Pipelines
+            html += `
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Recommended Ingestion Pipelines</h4>
+                    </div>
+                    <div class="card-body">
+                        ${results.ingestion_pipelines.map(pipeline => `
+                            <div class="mb-3">
+                                <h5>${pipeline.name}</h5>
+                                <p>${pipeline.description}</p>
+                                <p><strong>When to use:</strong> ${pipeline.when_to_use}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Display RAG Pipelines
+            html += `
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Recommended RAG Pipelines</h4>
+                    </div>
+                    <div class="card-body">
+                        ${results.rag_pipelines.map(pipeline => `
+                            <div class="mb-3">
+                                <h5>${pipeline.name}</h5>
+                                <p>${pipeline.description}</p>
+                                <p><strong>When to use:</strong> ${pipeline.when_to_use}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            content.innerHTML = html;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize form state
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            updateNavigation();
+            updateConditionalFields();
+        });
+    </script>
+</body>
+</html>

@@ -20,50 +20,72 @@ router = APIRouter()
 composer = EnhancedPipelineComposer()
 
 @router.post("/recommend-comprehensive", response_model=ComprehensiveRecommendationResponse)
-async def recommend_comprehensive_pipelines(requirements: ComprehensiveRequirementsRequest):
+async def recommend_comprehensive_pipelines(requirements: ComprehensiveRequirementsRequest = None):
     """Generate comprehensive pipeline recommendations based on detailed business requirements"""
-    try:
-        # Convert request to internal model
-        comprehensive_requirements = ComprehensiveUserRequirements(
-            data_characteristics=DataCharacteristics(
-                primary_data_type=DataType(requirements.primary_data_type),
-                secondary_data_types=[DataType(dt) for dt in requirements.secondary_data_types],
-                document_complexity=DocumentComplexity(requirements.document_complexity),
-                content_domain=ContentDomain(requirements.content_domain),
-                current_volume=VolumeSize(requirements.current_volume),
-                average_document_length=requirements.average_document_length,
-                update_frequency=UpdateFrequency(requirements.update_frequency),
-                language_requirements=requirements.language_requirements,
-                expected_growth_rate=requirements.expected_growth_rate,
-                metadata_importance=requirements.metadata_importance
-            ),
-            use_case_requirements=UseCaseRequirements(
-                primary_use_case=UseCase(requirements.primary_use_case),
-                expected_query_complexity=QueryComplexity(requirements.expected_query_complexity),
-                accuracy_tolerance=AccuracyTolerance(requirements.accuracy_tolerance),
-                latency_requirement=LatencyRequirement(requirements.latency_requirement),
-                preferred_response_type=ResponseType(requirements.preferred_response_type),
-                citation_requirements=requirements.citation_requirements,
-                expected_queries_per_day=requirements.expected_queries_per_day,
-                concurrent_users=requirements.concurrent_users
-            ),
-            business_context=BusinessContext(
-                budget_range=BudgetRange(requirements.budget_range),
-                team_expertise=TeamExpertise(requirements.team_expertise),
-                regulatory_requirements=requirements.regulatory_requirements,
-                data_sensitivity_level=requirements.data_sensitivity_level,
-                maintenance_capability=requirements.maintenance_capability,
-                industry_domain=requirements.industry_domain,
-                integration_requirements=requirements.integration_requirements
-            ),
-            technical_preferences=TechnicalPreferences(
-                deployment_preference=requirements.deployment_preference,
-                scalability_requirements=requirements.scalability_requirements,
-                monitoring_depth=requirements.monitoring_depth,
-                customization_importance=requirements.customization_importance
-            ),
-            additional_context=requirements.additional_context
+    if requirements is None:
+        requirements = ComprehensiveRequirementsRequest(
+            primary_data_type="text",
+            document_complexity="moderate",
+            content_domain="general",
+            current_volume="medium",
+            primary_use_case="question_answering",
+            expected_query_complexity="simple_factual",
+            accuracy_tolerance="moderate_tolerance",
+            latency_requirement="interactive",
+            budget_range="moderate",
+            team_expertise="intermediate",
+            data_sensitivity_level="internal"
         )
+    try:
+        try:
+            # Convert request to internal model
+            comprehensive_requirements = ComprehensiveUserRequirements(
+                data_characteristics=DataCharacteristics(
+                    primary_data_type=DataType(requirements.primary_data_type),
+                    secondary_data_types=[DataType(dt) for dt in (requirements.secondary_data_types or [])],
+                    document_complexity=DocumentComplexity(requirements.document_complexity),
+                    content_domain=ContentDomain(requirements.content_domain),
+                    current_volume=VolumeSize(requirements.current_volume),
+                    average_document_length=requirements.average_document_length,
+                    update_frequency=UpdateFrequency(requirements.update_frequency),
+                    language_requirements=requirements.language_requirements,
+                    expected_growth_rate=requirements.expected_growth_rate,
+                    metadata_importance=requirements.metadata_importance
+                ),
+                use_case_requirements=UseCaseRequirements(
+                    primary_use_case=UseCase(requirements.primary_use_case),
+                    expected_query_complexity=QueryComplexity(requirements.expected_query_complexity),
+                    accuracy_tolerance=AccuracyTolerance(requirements.accuracy_tolerance),
+                    latency_requirement=LatencyRequirement(requirements.latency_requirement),
+                    preferred_response_type=ResponseType(requirements.preferred_response_type),
+                    citation_requirements=requirements.citation_requirements,
+                    expected_queries_per_day=requirements.expected_queries_per_day,
+                    concurrent_users=requirements.concurrent_users
+                ),
+                business_context=BusinessContext(
+                    budget_range=BudgetRange(requirements.budget_range),
+                    team_expertise=TeamExpertise(requirements.team_expertise),
+                    regulatory_requirements=requirements.regulatory_requirements or [],
+                    data_sensitivity_level=requirements.data_sensitivity_level,
+                    maintenance_capability=requirements.maintenance_capability,
+                    industry_domain=requirements.industry_domain,
+                    integration_requirements=requirements.integration_requirements or []
+                ),
+                technical_preferences=TechnicalPreferences(
+                    deployment_preference=requirements.deployment_preference,
+                    scalability_requirements=requirements.scalability_requirements,
+                    monitoring_depth=requirements.monitoring_depth,
+                    customization_importance=requirements.customization_importance
+                ),
+                additional_context=requirements.additional_context
+            )
+        except AttributeError as e:
+            # Handle case where a required field is missing
+            missing_field = str(e).split("'")[3] if "has no attribute" in str(e) else "unknown field"
+            raise HTTPException(
+                status_code=400, 
+                detail=f"Missing required field: {missing_field}"
+            )
 
         # Generate recommendations
         result = composer.generate_comprehensive_recommendations(comprehensive_requirements)
