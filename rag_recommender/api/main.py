@@ -35,6 +35,10 @@ app.include_router(recommendations.router, prefix="/api/v1")
 app.include_router(components.router, prefix="/api/v1")
 app.include_router(health.router, prefix="/api/v1")
 
+# Import and include files router for downloads
+from .routes import files
+app.include_router(files.router, prefix="")
+
 # Add error handlers
 @app.exception_handler(500)
 async def internal_error_handler(request, exc):

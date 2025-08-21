@@ -36,17 +36,12 @@ class ComprehensiveRequirementsRequest(BaseModel):
     # Business context
     budget_range: str
     team_expertise: str
-    regulatory_requirements: List[str] = []
     data_sensitivity_level: str
-    maintenance_capability: str = "moderate"
     industry_domain: str = "general"
-    integration_requirements: List[str] = []
 
     # Technical preferences
-    deployment_preference: str = "flexible"
     scalability_requirements: str = "moderate"
     monitoring_depth: str = "standard"
-    customization_importance: str = "moderate"
     additional_context: str = ""
 
 class ComprehensiveRecommendationResponse(BaseModel):

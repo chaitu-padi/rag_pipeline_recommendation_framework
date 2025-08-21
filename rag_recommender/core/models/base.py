@@ -147,19 +147,14 @@ class BusinessContext:
     """Business related context and constraints"""
     budget_range: BudgetRange
     team_expertise: TeamExpertise
-    regulatory_requirements: List[str] = field(default_factory=list)
     data_sensitivity_level: str = "internal"
-    maintenance_capability: str = "moderate"
     industry_domain: str = "general"
-    integration_requirements: List[str] = field(default_factory=list)
 
 @dataclass
 class TechnicalPreferences:
     """Technical implementation preferences"""
-    deployment_preference: str = "flexible"
     scalability_requirements: str = "moderate"
     monitoring_depth: str = "standard"
-    customization_importance: str = "moderate"
 
 @dataclass
 class ComponentSpec:
@@ -220,6 +215,11 @@ class EnhancedRAGPipeline:
     when_to_use: str
     trade_offs: List[str] = field(default_factory=list)
     estimated_cost: str = "moderate"
+    configuration_file: str = ""  # Path to generated YAML config
+    performance_analysis: Dict[str, str] = field(default_factory=dict)
+    resource_requirements: Dict[str, str] = field(default_factory=dict)
+    cost_analysis: Dict[str, str] = field(default_factory=dict)
+    scaling_characteristics: Dict[str, str] = field(default_factory=dict)
 
 @dataclass
 class ComprehensiveUserRequirements:

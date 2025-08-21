@@ -1,0 +1,78 @@
+data_source:
+  type: pdf
+  file: data/pdf_files/*
+  pdf_config:
+    extract_tables: true
+    include_metadata: true
+    ocr_enabled: true
+embed_config:
+  model: sentence-transformers/all-MiniLM-L6-v2
+  batch_size: 256
+  normalize: true
+  dimension: 384
+  embedding_type: semantic
+  optimization:
+    use_gpu: true
+    half_precision: true
+    num_workers: 8
+  dimension_reduction:
+    use_pca: true
+    random_state: 42
+    whiten: false
+chunking:
+  strategy: sentence
+  chunk_size: 500
+  overlap: 50
+  delimiter: \n\n
+  combine_small_chunks: true
+  min_chunk_size: 100
+  sentence_options:
+    language: english
+    respect_breaks: true
+  advanced:
+    normalize_whitespace: true
+    preserve_line_breaks: false
+    smart_splitting: true
+vector_db:
+  type: qdrant
+  host: localhost
+  port: 6333
+  collection: pdf_embeddings
+  connection_retries: 3
+  retry_delay: 5
+  timeout: 300
+  batch_size: 100
+  vector_index:
+    type: hnsw
+    params:
+      m: 16
+      ef_construct: 175
+      ef_runtime: 87
+      full_scan_threshold: 7000
+    quantization:
+      enabled: true
+      always_ram: true
+      quantum: 0.01
+  payload_index:
+  - field: page_number
+    type: integer
+  - field: chunk_index
+    type: integer
+  - field: total_chunks
+    type: integer
+  - field: chunk_size
+    type: integer
+  - field: chunking_strategy
+    type: keyword
+  - field: content_type
+    type: keyword
+  - field: metadata
+    type: object
+retrieval:
+  enabled: true
+  top_k: 9
+  score_threshold: 0.5206000000000001
+  metric_type: COSINE
+  nprobe: 512
+  rerank_results: true
+  diversity_weight: 0.2

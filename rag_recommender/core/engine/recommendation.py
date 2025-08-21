@@ -43,8 +43,7 @@ class EnhancedRecommendationEngine:
         # Technical constraints score
         # resource constraints aren't modeled explicitly; derive minimal info
         resource_constraints = {
-            "budget_range": bc.budget_range,
-            "maintenance_capability": bc.maintenance_capability,
+            "budget_range": bc.budget_range
         }
         scores["technical_constraints"] = self._calculate_technical_constraints(
             bc.team_expertise,

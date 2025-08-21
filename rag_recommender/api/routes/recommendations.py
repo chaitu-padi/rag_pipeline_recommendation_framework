@@ -65,17 +65,12 @@ async def recommend_comprehensive_pipelines(requirements: ComprehensiveRequireme
                 business_context=BusinessContext(
                     budget_range=BudgetRange(requirements.budget_range),
                     team_expertise=TeamExpertise(requirements.team_expertise),
-                    regulatory_requirements=requirements.regulatory_requirements or [],
                     data_sensitivity_level=requirements.data_sensitivity_level,
-                    maintenance_capability=requirements.maintenance_capability,
-                    industry_domain=requirements.industry_domain,
-                    integration_requirements=requirements.integration_requirements or []
+                    industry_domain=requirements.industry_domain
                 ),
                 technical_preferences=TechnicalPreferences(
-                    deployment_preference=requirements.deployment_preference,
                     scalability_requirements=requirements.scalability_requirements,
-                    monitoring_depth=requirements.monitoring_depth,
-                    customization_importance=requirements.customization_importance
+                    monitoring_depth=requirements.monitoring_depth
                 ),
                 additional_context=requirements.additional_context
             )
