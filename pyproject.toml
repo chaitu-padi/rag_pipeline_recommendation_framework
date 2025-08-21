@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rag_recommender"
+version = "2.0.0"
+authors = [
+  { name="Your Name", email="your.email@example.com" },
+]
+description = "A comprehensive RAG pipeline recommendation framework"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "fastapi>=0.68.0",
+    "pydantic>=1.8.0",
+    "uvicorn>=0.15.0",
+    "python-dotenv>=0.19.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/your-username/rag_recommender"
+"Bug Tracker" = "https://github.com/your-username/rag_recommender/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
