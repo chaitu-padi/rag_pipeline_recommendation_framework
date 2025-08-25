@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Pipeline Optimization System - Executive Presentation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="presentation-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="main-title">RAG Pipeline Optimization System</h1>
+                <h2 class="main-subtitle">Preventing AI Investment Failures Through Data-Driven Automation</h2>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">60%</span>
+                        <span class="stat-label">Project Failure Rate</span>
+                    </div>
+                    <div class="stat-divider">→</div>
+                    <div class="stat-item success">
+                        <span class="stat-number">80%+</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Download Controls -->
+    <div class="download-controls">
+        <button class="btn btn--outline download-btn" id="downloadPDF">
+            📄 Download PDF
+        </button>
+        <button class="btn btn--outline download-btn" id="downloadHTML">
+            💾 Save HTML
+        </button>
+        <button class="btn btn--outline download-btn" id="printPresentation">
+            🖨️ Print
+        </button>
+    </div>
+
+    <!-- Main Presentation Grid -->
+    <main class="presentation-main" id="presentationContent">
+        <div class="container">
+            <div class="presentation-grid">
+                
+                <!-- Problem Statement Section -->
+                <section class="presentation-section problem-section">
+                    <div class="section-header">
+                        <h3>The Critical Problem</h3>
+                        <div class="problem-indicator">🚨</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="problem-image">
+                            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/ae511d1a-6a10-47d9-a858-047e493de3ed.png" 
+                                 alt="RAG Project Failure Problem Statement" 
+                                 class="feature-image">
+                        </div>
+                        <div class="problem-stats">
+                            <div class="stat-highlight">
+                                <span class="stat-value">60%</span>
+                                <span class="stat-desc">of RAG projects fail to reach production</span>
+                            </div>
+                            <ul class="impact-list">
+                                <li>💸 Investment waste in R&D and cloud resources</li>
+                                <li>⏱️ Lost speed-to-market opportunities</li>
+                                <li>📉 Eroded ROI and credibility setbacks</li>
+                                <li>🔄 Continuous resource drain</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Solution Section -->
+                <section class="presentation-section solution-section">
+                    <div class="section-header">
+                        <h3>Our AI-Powered Solution</h3>
+                        <div class="solution-indicator">🎯</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="solution-image">
+                            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/1f6a6c52-0e91-4d47-a93b-5d306fd46420.png" 
+                                 alt="Proposed Solution - AI-Powered RAG Optimization System" 
+                                 class="feature-image">
+                        </div>
+                        <div class="solution-features">
+                            <div class="feature-item">
+                                <span class="feature-icon">📊</span>
+                                <div class="feature-content">
+                                    <h4>External Benchmarks</h4>
+                                    <p>Leverage proven performance data</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🔄</span>
+                                <div class="feature-content">
+                                    <h4>Dynamic Evaluation</h4>
+                                    <p>Real-time optimization on your data</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🧠</span>
+                                <div class="feature-content">
+                                    <h4>Smart Recommendations</h4>
+                                    <p>AI-driven configuration choices</p>
+                                </div>
+                            </div>
+                            <div class="innovation-badge">
+                                <strong>Innovation:</strong> First system combining benchmarks with user data
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Process Flow Section - Full Width -->
+                <section class="presentation-section process-section full-width">
+                    <div class="section-header">
+                        <h3>Complete Process Flow</h3>
+                        <div class="process-indicator">🔄</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="process-image">
+                            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/2c62d20c-ac91-480b-b03a-7123eee891b0.png" 
+                                 alt="RAG Pipeline Optimization Flow - End-to-End Process" 
+                                 class="flow-image">
+                        </div>
+                        <div class="process-steps">
+                            <div class="step-item">
+                                <div class="step-icon">👤</div>
+                                <div class="step-content">
+                                    <h4>User Inputs</h4>
+                                    <p>Specify requirements and priorities</p>
+                                </div>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="step-item">
+                                <div class="step-icon">📁</div>
+                                <div class="step-content">
+                                    <h4>Data Upload</h4>
+                                    <p>Upload sample documents</p>
+                                </div>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="step-item">
+                                <div class="step-icon">🔄</div>
+                                <div class="step-content">
+                                    <h4>DASK Processing</h4>
+                                    <p>Parallel analysis and profiling</p>
+                                </div>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="step-item">
+                                <div class="step-icon">📊</div>
+                                <div class="step-content">
+                                    <h4>Benchmark Integration</h4>
+                                    <p>Apply external performance data</p>
+                                </div>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="step-item">
+                                <div class="step-icon">🧠</div>
+                                <div class="step-content">
+                                    <h4>AI Optimization</h4>
+                                    <p>MAB + Bayesian recommendation</p>
+                                </div>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="step-item success-step">
+                                <div class="step-icon">🚀</div>
+                                <div class="step-content">
+                                    <h4>Production Success</h4>
+                                    <p>Deploy optimized pipeline</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ROI Section -->
+                <section class="presentation-section roi-section">
+                    <div class="section-header">
+                        <h3>Investment Protection & ROI</h3>
+                        <div class="roi-indicator">💰</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="roi-image">
+                            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c451974b-1710-48ab-8c06-2c0bc97fac56.png" 
+                                 alt="Investment ROI and Failure Prevention Comparison" 
+                                 class="feature-image">
+                        </div>
+                        <div class="roi-metrics">
+                            <div class="metric-card failure-reduction">
+                                <h4>Failure Rate Reduction</h4>
+                                <div class="metric-comparison">
+                                    <span class="before">60% → </span>
+                                    <span class="after">20%</span>
+                                </div>
+                                <p>50% risk reduction</p>
+                            </div>
+                            <div class="metric-card investment-savings">
+                                <h4>Investment Savings</h4>
+                                <div class="metric-value">$300K-$400K</div>
+                                <p>per $1M invested</p>
+                            </div>
+                            <div class="roi-highlight">
+                                <strong>Time Savings:</strong> Weeks/months of team time saved per project
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technical Architecture Section -->
+                <section class="presentation-section architecture-section">
+                    <div class="section-header">
+                        <h3>Proven Technical Foundation</h3>
+                        <div class="tech-indicator">⚙️</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="architecture-image">
+                            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/058fe01d-0d0a-49f8-8063-5d27c9c56903.png" 
+                                 alt="System Architecture - Five-Layer Technical Overview" 
+                                 class="feature-image">
+                        </div>
+                        <div class="tech-stack">
+                            <div class="tech-item">
+                                <span class="tech-icon">⚛️</span>
+                                <span>React UI</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-icon">⚡</span>
+                                <span>FastAPI Services</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-icon">🔄</span>
+                                <span>DASK Distributed Computing</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-icon">🧠</span>
+                                <span>Bayesian Optimization</span>
+                            </div>
+                        </div>
+                        <div class="feasibility-badges">
+                            <div class="feasibility-badge">✅ Container-ready</div>
+                            <div class="feasibility-badge">✅ Auto-scaling</div>
+                            <div class="feasibility-badge">✅ Proven stack</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Call to Action Section -->
+                <section class="presentation-section cta-section">
+                    <div class="section-header">
+                        <h3>Next Steps</h3>
+                        <div class="cta-indicator">🎯</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="timeline-info">
+                            <h4>Implementation Timeline</h4>
+                            <div class="timeline-stat">6 months to production</div>
+                        </div>
+                        <div class="resource-requirements">
+                            <h4>Resource Requirements</h4>
+                            <ul>
+                                <li>4-6 engineers</li>
+                                <li>Cloud infrastructure</li>
+                                <li>6-month development timeline</li>
+                            </ul>
+                        </div>
+                        <div class="expected-outcomes">
+                            <h4>Expected Outcomes</h4>
+                            <div class="outcome-highlight">80%+ RAG project success rate</div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn--primary cta-button" id="approveProject">
+                                ✅ Approve Implementation
+                            </button>
+                            <button class="btn btn--secondary cta-button" id="requestDetails">
+                                📋 Request Detailed Proposal
+                            </button>
+                        </div>
+                        <div class="urgency-message">
+                            <strong>Why Act Now:</strong> First-to-market advantage in automated RAG optimization
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for detailed information -->
+    <div id="detailModal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Details</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
