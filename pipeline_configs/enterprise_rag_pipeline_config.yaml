@@ -71,7 +71,7 @@ vector_db:
 retrieval:
   enabled: true
   top_k: 9
-  score_threshold: 0.5206000000000001
+  score_threshold: 0.45620000000000005
   metric_type: COSINE
   nprobe: 512
   rerank_results: true
