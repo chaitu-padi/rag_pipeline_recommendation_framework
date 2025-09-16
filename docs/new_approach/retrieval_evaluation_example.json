@@ -1,0 +1,242 @@
+{
+  "rag_retrieval_evaluation": {
+    "scenario": {
+      "indexed_documents": "10,000 financial documents",
+      "query_patterns": "Regulatory compliance questions",
+      "user_expectations": "Accurate, fast, comprehensive answers",
+      "evaluation_dataset": "500 test queries with ground truth"
+    },
+    "baseline_configuration": {
+      "retrieval_method": "Cosine similarity",
+      "top_k": 5,
+      "llm": "GPT-3.5-turbo",
+      "prompt_template": "Basic Q&A template",
+      "performance": {
+        "precision_at_5": 0.68,
+        "recall_at_5": 0.72,
+        "answer_relevancy": 0.71,
+        "faithfulness": 0.74,
+        "response_time": "850ms"
+      }
+    },
+    "optimization_process": {
+      "retrieval_mechanism_optimization": {
+        "tested_approaches": [
+          {
+            "method": "Pure vector similarity",
+            "parameters": {
+              "similarity": "cosine",
+              "top_k": 5
+            },
+            "metrics": {
+              "precision@5": 0.68,
+              "recall@5": 0.72,
+              "latency": "120ms"
+            }
+          },
+          {
+            "method": "Hybrid search (vector + BM25)",
+            "parameters": {
+              "vector_weight": 0.7,
+              "bm25_weight": 0.3,
+              "top_k": 10
+            },
+            "metrics": {
+              "precision@5": 0.75,
+              "recall@5": 0.79,
+              "latency": "180ms"
+            }
+          },
+          {
+            "method": "Multi-stage retrieval",
+            "parameters": {
+              "initial_k": 20,
+              "rerank_k": 5,
+              "reranker": "cross-encoder"
+            },
+            "metrics": {
+              "precision@5": 0.81,
+              "recall@5": 0.76,
+              "latency": "320ms"
+            }
+          },
+          {
+            "method": "Contextual retrieval with query expansion",
+            "parameters": {
+              "expansion_terms": 3,
+              "context_window": 2,
+              "top_k": 8
+            },
+            "metrics": {
+              "precision@5": 0.78,
+              "recall@5": 0.83,
+              "latency": "250ms"
+            }
+          }
+        ],
+        "selected_approach": {
+          "method": "Multi-stage retrieval",
+          "justification": "Highest precision while maintaining acceptable latency",
+          "improvement": "+19% precision, +5% recall"
+        }
+      },
+      "llm_optimization": {
+        "tested_models": [
+          {
+            "model": "GPT-3.5-turbo",
+            "cost_per_1k_tokens": "$0.002",
+            "metrics": {
+              "faithfulness": 0.74,
+              "answer_relevancy": 0.71,
+              "latency": "450ms"
+            }
+          },
+          {
+            "model": "GPT-4",
+            "cost_per_1k_tokens": "$0.03",
+            "metrics": {
+              "faithfulness": 0.89,
+              "answer_relevancy": 0.85,
+              "latency": "1200ms"
+            }
+          },
+          {
+            "model": "Claude-3-Haiku",
+            "cost_per_1k_tokens": "$0.00025",
+            "metrics": {
+              "faithfulness": 0.78,
+              "answer_relevancy": 0.76,
+              "latency": "380ms"
+            }
+          },
+          {
+            "model": "Llama-2-70B (self-hosted)",
+            "cost_per_1k_tokens": "$0.0008",
+            "metrics": {
+              "faithfulness": 0.81,
+              "answer_relevancy": 0.79,
+              "latency": "680ms"
+            }
+          }
+        ],
+        "selected_model": {
+          "model": "Llama-2-70B (self-hosted)",
+          "justification": "Best cost-performance ratio with good quality",
+          "improvement": "+9% faithfulness, +11% answer relevancy"
+        }
+      },
+      "prompt_optimization": {
+        "tested_templates": [
+          {
+            "template": "Basic Q&A",
+            "structure": "Context: {context}\nQuestion: {question}\nAnswer:",
+            "metrics": {
+              "answer_relevancy": 0.71,
+              "completeness": 0.68
+            }
+          },
+          {
+            "template": "Context-aware with instructions",
+            "structure": "You are a financial compliance expert. Use the following context to answer the question accurately...",
+            "metrics": {
+              "answer_relevancy": 0.79,
+              "completeness": 0.74
+            }
+          },
+          {
+            "template": "Chain-of-thought reasoning",
+            "structure": "Think step by step about this financial question using the provided context...",
+            "metrics": {
+              "answer_relevancy": 0.83,
+              "completeness": 0.81
+            }
+          },
+          {
+            "template": "Few-shot with examples",
+            "structure": "Here are examples of similar questions and answers... Now answer:",
+            "metrics": {
+              "answer_relevancy": 0.85,
+              "completeness": 0.79
+            }
+          }
+        ],
+        "selected_template": {
+          "template": "Few-shot with examples",
+          "improvement": "+20% answer relevancy, +16% completeness"
+        }
+      }
+    },
+    "optimized_parameters": {
+      "final_configuration": {
+        "retrieval": {
+          "method": "Multi-stage retrieval",
+          "initial_retrieval_k": 20,
+          "final_k": 5,
+          "reranker": "cross-encoder-ms-marco-MiniLM",
+          "similarity_threshold": 0.7
+        },
+        "llm": {
+          "model": "Llama-2-70B",
+          "temperature": 0.1,
+          "max_tokens": 512,
+          "context_window": 4096
+        },
+        "prompt": {
+          "template": "Few-shot with domain examples",
+          "examples_count": 3,
+          "instruction_emphasis": "financial accuracy"
+        }
+      },
+      "performance_predictions": {
+        "retrieval_metrics": {
+          "precision_at_5": 0.81,
+          "recall_at_5": 0.76,
+          "mrr": 0.87,
+          "ndcg_at_5": 0.83
+        },
+        "generation_metrics": {
+          "faithfulness": 0.81,
+          "answer_relevancy": 0.85,
+          "completeness": 0.79,
+          "rouge_l": 0.73
+        },
+        "system_metrics": {
+          "end_to_end_latency": "1.2 seconds",
+          "cost_per_query": "$0.012",
+          "throughput": "50 queries/minute"
+        }
+      }
+    },
+    "rouge_bleu_calculations": {
+      "sample_evaluation": {
+        "query": "What are the reporting requirements for derivative transactions under Dodd-Frank?",
+        "ground_truth": "Under Dodd-Frank, derivative transactions must be reported to swap data repositories within specific timeframes, with cleared swaps reported by the end of the business day and uncleared swaps reported within 24 hours.",
+        "generated_answer": "Dodd-Frank requires derivative transactions to be reported to registered swap data repositories. Cleared swaps must be reported by end of business day, while uncleared swaps have a 24-hour reporting window.",
+        "rouge_scores": {
+          "rouge_1": {
+            "precision": 0.85,
+            "recall": 0.82,
+            "f1": 0.835
+          },
+          "rouge_2": {
+            "precision": 0.78,
+            "recall": 0.73,
+            "f1": 0.755
+          },
+          "rouge_l": {
+            "precision": 0.81,
+            "recall": 0.79,
+            "f1": 0.8
+          }
+        },
+        "bleu_score": {
+          "bleu_1": 0.82,
+          "bleu_2": 0.75,
+          "bleu_3": 0.68,
+          "bleu_4": 0.62,
+          "cumulative_bleu": 0.72
+        }
+      }
+    }
+  }
+}

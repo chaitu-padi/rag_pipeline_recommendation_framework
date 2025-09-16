@@ -1,0 +1,526 @@
+{
+  "user_input_requirements": {
+    "data_sources": {
+      "source_data_types": [
+        "PDF documents",
+        "Microsoft Word files",
+        "Plain text files",
+        "RDBMS tables (PostgreSQL, MySQL, SQLite)",
+        "NoSQL databases (MongoDB, Elasticsearch)",
+        "CSV/Excel files",
+        "Web pages/HTML",
+        "JSON/XML documents",
+        "Audio transcripts",
+        "Image OCR content"
+      ],
+      "sample_data": {
+        "requirement": "Provide representative sample files/data",
+        "minimum_size": "10MB or 1000 documents",
+        "format_examples": "Upload 3-5 sample files per data type"
+      }
+    },
+    "use_case_details": {
+      "domain": [
+        "Legal",
+        "Medical",
+        "Financial",
+        "Technical Documentation",
+        "Customer Support",
+        "Research",
+        "E-commerce",
+        "Education"
+      ],
+      "query_types": [
+        "Factual Q&A",
+        "Summarization",
+        "Comparison",
+        "Analysis",
+        "Multi-step reasoning",
+        "Document synthesis"
+      ],
+      "complexity_level": [
+        "Simple",
+        "Moderate",
+        "Complex",
+        "Expert-level"
+      ],
+      "user_personas": [
+        "End users",
+        "Domain experts",
+        "Technical staff",
+        "General audience"
+      ]
+    },
+    "volume_specifications": {
+      "current_data_volume": {
+        "documents": "Number of documents",
+        "total_size": "Total size in GB/TB",
+        "avg_document_size": "Average document size"
+      },
+      "growth_projections": {
+        "monthly_growth": "Percentage growth per month",
+        "yearly_projection": "Expected volume in 12 months",
+        "peak_usage": "Expected peak concurrent users"
+      }
+    },
+    "performance_requirements": {
+      "priorities": {
+        "ranking_options": [
+          "Accuracy > Latency > Cost",
+          "Latency > Accuracy > Cost",
+          "Cost > Accuracy > Latency",
+          "Balanced optimization"
+        ]
+      },
+      "latency_tolerance": {
+        "query_response_time": "Maximum acceptable response time (ms)",
+        "indexing_time": "Acceptable indexing time per document",
+        "real_time_requirements": "Real-time vs batch processing needs"
+      },
+      "accuracy_requirements": {
+        "minimum_precision": "Minimum acceptable precision %",
+        "minimum_recall": "Minimum acceptable recall %",
+        "factual_accuracy": "Tolerance for factual errors",
+        "relevance_threshold": "Minimum relevance score"
+      }
+    },
+    "operational_constraints": {
+      "cost_budget": {
+        "monthly_budget": "Maximum monthly operational cost",
+        "setup_budget": "One-time setup budget",
+        "cost_per_query": "Target cost per query"
+      },
+      "infrastructure": {
+        "deployment_type": [
+          "Cloud",
+          "On-premise",
+          "Hybrid"
+        ],
+        "scalability_needs": [
+          "Auto-scaling",
+          "Fixed capacity",
+          "Manual scaling"
+        ],
+        "availability_requirements": "SLA requirements (99.9%, 99.99%)"
+      },
+      "security_privacy": {
+        "data_privacy_level": [
+          "Public",
+          "Internal",
+          "Confidential",
+          "Highly sensitive"
+        ],
+        "compliance_requirements": [
+          "GDPR",
+          "HIPAA",
+          "SOX",
+          "PCI-DSS",
+          "Custom"
+        ],
+        "data_residency": "Geographic data storage requirements"
+      }
+    },
+    "evaluation_criteria": {
+      "quality_metrics": {
+        "truthfulness_tolerance": "Acceptable hallucination rate %",
+        "consistency_requirements": "Response consistency across similar queries",
+        "completeness_expectation": "Expected information coverage %"
+      },
+      "business_metrics": {
+        "user_satisfaction": "Target user satisfaction score",
+        "task_completion_rate": "Expected successful task completion %",
+        "roi_expectations": "Expected return on investment timeline"
+      }
+    }
+  },
+  "evaluation_components": {
+    "embedding_model_evaluation": {
+      "static_evaluation": {
+        "metrics": [
+          "MTEB scores",
+          "Domain-specific benchmarks",
+          "Semantic similarity tests"
+        ],
+        "datasets": [
+          "MS MARCO",
+          "Natural Questions",
+          "Domain-specific test sets"
+        ],
+        "approaches": [
+          "Zero-shot evaluation",
+          "Few-shot evaluation",
+          "Fine-tuned evaluation"
+        ]
+      },
+      "dynamic_evaluation": {
+        "metrics": [
+          "Query-document relevance",
+          "Retrieval precision@k",
+          "Retrieval recall@k"
+        ],
+        "methods": [
+          "A/B testing",
+          "Online evaluation",
+          "User feedback integration"
+        ],
+        "optimization": [
+          "Iterative model selection",
+          "Ensemble approaches",
+          "Domain adaptation"
+        ]
+      },
+      "model_selection_criteria": {
+        "dimensions": [
+          384,
+          512,
+          768,
+          1024,
+          1536
+        ],
+        "performance_benchmarks": [
+          "Retrieval accuracy",
+          "Semantic understanding",
+          "Domain alignment"
+        ],
+        "computational_requirements": [
+          "Memory usage",
+          "Inference speed",
+          "Hardware compatibility"
+        ],
+        "cost_considerations": [
+          "API costs",
+          "Self-hosting costs",
+          "Maintenance overhead"
+        ]
+      }
+    },
+    "chunking_strategy_evaluation": {
+      "parameters": {
+        "chunk_size": [
+          128,
+          256,
+          512,
+          1024,
+          2048,
+          4096
+        ],
+        "overlap_percentage": [
+          0,
+          10,
+          20,
+          30,
+          50
+        ],
+        "merge_small_chunks": [
+          true,
+          false
+        ],
+        "chunk_threshold": [
+          50,
+          100,
+          200
+        ],
+        "normalization_options": [
+          "Whitespace",
+          "Unicode",
+          "Case normalization",
+          "Special characters"
+        ],
+        "boundary_detection": [
+          "Sentence boundaries",
+          "Paragraph boundaries",
+          "Section boundaries",
+          "Semantic boundaries"
+        ]
+      },
+      "strategies": {
+        "fixed_size": "Fixed token/character count chunks",
+        "semantic": "Meaning-based chunk boundaries",
+        "hybrid": "Combined fixed-size and semantic",
+        "document_structure": "Structure-aware chunking",
+        "sliding_window": "Overlapping window approach"
+      },
+      "evaluation_metrics": {
+        "context_preservation": "Semantic coherence across chunks",
+        "information_completeness": "Information loss during chunking",
+        "retrieval_effectiveness": "Impact on retrieval accuracy",
+        "processing_efficiency": "Chunking speed and resource usage"
+      }
+    },
+    "dimensionality_optimization": {
+      "techniques": {
+        "pca": "Principal Component Analysis",
+        "truncated_svd": "Truncated Singular Value Decomposition",
+        "autoencoder": "Neural dimensionality reduction",
+        "random_projection": "Random projection methods"
+      },
+      "evaluation_criteria": {
+        "information_retention": "Percentage of information preserved",
+        "retrieval_performance": "Impact on retrieval accuracy",
+        "storage_savings": "Reduction in storage requirements",
+        "query_speed": "Improvement in query response time"
+      },
+      "optimization_targets": {
+        "dimension_ranges": [
+          128,
+          256,
+          384,
+          512,
+          768
+        ],
+        "compression_ratios": [
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "quality_thresholds": [
+          0.95,
+          0.9,
+          0.85,
+          0.8
+        ]
+      }
+    },
+    "llm_selection_evaluation": {
+      "model_categories": {
+        "proprietary": [
+          "GPT-4",
+          "GPT-3.5",
+          "Claude",
+          "Gemini"
+        ],
+        "open_source": [
+          "Llama 2/3",
+          "Mistral",
+          "Falcon",
+          "Vicuna"
+        ],
+        "specialized": [
+          "Domain-specific fine-tuned models",
+          "Code generation models",
+          "Multilingual models"
+        ]
+      },
+      "evaluation_criteria": {
+        "accuracy_metrics": [
+          "Factual accuracy",
+          "Reasoning capability",
+          "Domain knowledge"
+        ],
+        "safety_metrics": [
+          "Hallucination rate",
+          "Bias detection",
+          "Harmful content prevention"
+        ],
+        "performance_metrics": [
+          "Response time",
+          "Throughput",
+          "Context window utilization"
+        ],
+        "cost_metrics": [
+          "Cost per token",
+          "Total cost of ownership",
+          "Scaling costs"
+        ]
+      },
+      "use_case_matching": {
+        "question_answering": "Factual accuracy and completeness",
+        "summarization": "Conciseness and coverage",
+        "analysis": "Reasoning and insight generation",
+        "creative_tasks": "Creativity and coherence"
+      }
+    },
+    "vector_database_evaluation": {
+      "databases": {
+        "specialized": [
+          "Pinecone",
+          "Weaviate",
+          "Qdrant",
+          "Milvus",
+          "Chroma"
+        ],
+        "general_purpose": [
+          "MongoDB Atlas",
+          "Redis",
+          "Elasticsearch"
+        ],
+        "embedded": [
+          "FAISS",
+          "Annoy",
+          "ScaNN"
+        ],
+        "hybrid": [
+          "pgvector",
+          "SingleStore",
+          "ClickHouse"
+        ]
+      },
+      "indexing_strategies": {
+        "hnsw": {
+          "parameters": [
+            "M",
+            "efConstruction",
+            "efSearch"
+          ],
+          "characteristics": "High accuracy, memory intensive",
+          "use_cases": "High-accuracy requirements, sufficient memory"
+        },
+        "ivf": {
+          "parameters": [
+            "nlist",
+            "nprobe",
+            "centroids"
+          ],
+          "characteristics": "Good balance, cluster-dependent",
+          "use_cases": "Large datasets, moderate accuracy needs"
+        },
+        "pq": {
+          "parameters": [
+            "m",
+            "nbits",
+            "subquantizers"
+          ],
+          "characteristics": "Memory efficient, lower accuracy",
+          "use_cases": "Memory constraints, large-scale deployment"
+        },
+        "ivf_pq": {
+          "parameters": [
+            "nlist",
+            "m",
+            "nbits"
+          ],
+          "characteristics": "Balanced approach",
+          "use_cases": "Most general-purpose applications"
+        }
+      },
+      "selection_criteria": {
+        "performance": [
+          "Query latency",
+          "Indexing speed",
+          "Throughput"
+        ],
+        "scalability": [
+          "Horizontal scaling",
+          "Data volume limits",
+          "Concurrent users"
+        ],
+        "features": [
+          "Filtering capabilities",
+          "Metadata support",
+          "Real-time updates"
+        ],
+        "operational": [
+          "Deployment complexity",
+          "Monitoring tools",
+          "Backup/recovery"
+        ]
+      }
+    },
+    "retrieval_mechanism_evaluation": {
+      "approaches": {
+        "similarity_search": {
+          "metrics": [
+            "Cosine similarity",
+            "Euclidean distance",
+            "Dot product"
+          ],
+          "parameters": [
+            "Top-k",
+            "Similarity threshold",
+            "Distance metric"
+          ]
+        },
+        "hybrid_search": {
+          "combination": "Vector + keyword search",
+          "parameters": [
+            "Weight balance",
+            "Fusion methods",
+            "Ranking strategies"
+          ]
+        },
+        "multi_stage": {
+          "stages": [
+            "Initial retrieval",
+            "Re-ranking",
+            "Final selection"
+          ],
+          "parameters": [
+            "Stage thresholds",
+            "Re-ranking models",
+            "Selection criteria"
+          ]
+        },
+        "contextual": {
+          "methods": [
+            "Query expansion",
+            "Context-aware retrieval",
+            "Feedback integration"
+          ],
+          "parameters": [
+            "Expansion terms",
+            "Context window",
+            "Feedback weight"
+          ]
+        }
+      },
+      "optimization_parameters": {
+        "retrieval_count": [
+          5,
+          10,
+          20,
+          50,
+          100
+        ],
+        "similarity_thresholds": [
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "re_ranking_approaches": [
+          "Cross-encoder",
+          "Bi-encoder",
+          "Learning-to-rank"
+        ],
+        "fusion_methods": [
+          "RRF",
+          "Weighted sum",
+          "Machine learning"
+        ]
+      }
+    },
+    "prompt_template_evaluation": {
+      "template_types": {
+        "basic_qa": "Simple question-answering format",
+        "context_aware": "Context-first templates",
+        "instruction_following": "Detailed instruction templates",
+        "few_shot": "Example-based templates",
+        "chain_of_thought": "Step-by-step reasoning templates"
+      },
+      "optimization_techniques": {
+        "prompt_engineering": "Manual optimization",
+        "automated_optimization": "AI-driven prompt improvement",
+        "a_b_testing": "Comparative template testing",
+        "user_feedback": "Feedback-driven refinement"
+      },
+      "evaluation_metrics": {
+        "response_quality": [
+          "Relevance",
+          "Completeness",
+          "Accuracy"
+        ],
+        "consistency": [
+          "Response variability",
+          "Format adherence"
+        ],
+        "efficiency": [
+          "Token usage",
+          "Response time",
+          "Processing cost"
+        ]
+      }
+    }
+  }
+}

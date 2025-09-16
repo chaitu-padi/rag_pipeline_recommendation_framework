@@ -1,0 +1,256 @@
+{
+  "rag_ingestion_evaluation": {
+    "scenario": {
+      "domain": "Financial Services Documentation",
+      "data_volume": "10,000 PDF documents, 500MB total",
+      "use_case": "Regulatory compliance Q&A system",
+      "requirements": "High accuracy, moderate latency tolerance"
+    },
+    "user_inputs": {
+      "data_sources": [
+        "PDF regulatory documents",
+        "Financial reports",
+        "Compliance guidelines"
+      ],
+      "sample_data": "100 representative documents provided",
+      "use_case_details": {
+        "domain": "Financial Services",
+        "query_types": [
+          "Factual Q&A",
+          "Compliance verification",
+          "Document search"
+        ],
+        "complexity": "Moderate to complex"
+      },
+      "volume_specs": {
+        "current_volume": "10,000 documents",
+        "growth_rate": "5% monthly",
+        "peak_users": "100 concurrent"
+      },
+      "priorities": "Accuracy (90%) > Cost (60%) > Latency (70%)",
+      "constraints": {
+        "budget": "$2,000/month",
+        "privacy": "Confidential data",
+        "compliance": "SOX, SEC regulations"
+      }
+    },
+    "evaluation_process": {
+      "step_1_baseline": {
+        "chunking": {
+          "strategy": "Fixed-size chunking",
+          "parameters": {
+            "chunk_size": 1024,
+            "overlap": 20
+          },
+          "performance": {
+            "processing_speed": "50 docs/min",
+            "context_preservation": 0.75
+          }
+        },
+        "embedding": {
+          "model": "sentence-transformers/all-mpnet-base-v2",
+          "dimensions": 768,
+          "performance": {
+            "encoding_speed": "100 chunks/sec",
+            "domain_relevance": 0.72
+          }
+        },
+        "storage": {
+          "vector_db": "FAISS",
+          "index_type": "Flat",
+          "performance": {
+            "indexing_time": "2 hours",
+            "storage_size": "1.2GB"
+          }
+        }
+      },
+      "step_2_optimization": {
+        "chunking_optimization": {
+          "tested_strategies": [
+            {
+              "strategy": "Fixed-size",
+              "chunk_size": 512,
+              "overlap": 10,
+              "score": 0.78
+            },
+            {
+              "strategy": "Fixed-size",
+              "chunk_size": 1024,
+              "overlap": 20,
+              "score": 0.75
+            },
+            {
+              "strategy": "Semantic",
+              "boundary": "sentence",
+              "min_size": 200,
+              "score": 0.82
+            },
+            {
+              "strategy": "Hybrid",
+              "base_size": 800,
+              "semantic_boundaries": true,
+              "score": 0.85
+            }
+          ],
+          "best_configuration": {
+            "strategy": "Hybrid chunking",
+            "parameters": {
+              "base_size": 800,
+              "semantic_boundaries": true,
+              "overlap": 15
+            },
+            "improvement": "+13% context preservation, +8% retrieval accuracy"
+          }
+        },
+        "embedding_optimization": {
+          "tested_models": [
+            {
+              "model": "all-mpnet-base-v2",
+              "dimensions": 768,
+              "mteb_score": 0.69,
+              "domain_score": 0.72
+            },
+            {
+              "model": "e5-large-v2",
+              "dimensions": 1024,
+              "mteb_score": 0.72,
+              "domain_score": 0.78
+            },
+            {
+              "model": "gte-large",
+              "dimensions": 1024,
+              "mteb_score": 0.71,
+              "domain_score": 0.76
+            },
+            {
+              "model": "financial-bert-embeddings",
+              "dimensions": 768,
+              "mteb_score": 0.65,
+              "domain_score": 0.85
+            }
+          ],
+          "best_configuration": {
+            "model": "financial-bert-embeddings",
+            "dimensions": 768,
+            "justification": "Highest domain-specific performance despite lower general MTEB score",
+            "improvement": "+18% domain relevance, +12% retrieval precision"
+          }
+        },
+        "dimensionality_optimization": {
+          "pca_analysis": {
+            "original_dims": 768,
+            "tested_reductions": [
+              384,
+              512,
+              640
+            ],
+            "results": {
+              "384": {
+                "information_retention": 0.87,
+                "storage_reduction": "50%",
+                "speed_improvement": "40%"
+              },
+              "512": {
+                "information_retention": 0.93,
+                "storage_reduction": "33%",
+                "speed_improvement": "25%"
+              },
+              "640": {
+                "information_retention": 0.97,
+                "storage_reduction": "17%",
+                "speed_improvement": "15%"
+              }
+            },
+            "selected_dimensions": 512,
+            "rationale": "Optimal balance of performance and efficiency"
+          }
+        }
+      },
+      "step_3_integration": {
+        "vector_database_selection": {
+          "tested_databases": [
+            {
+              "db": "FAISS",
+              "index": "IVF-PQ",
+              "build_time": "45min",
+              "query_latency": "12ms",
+              "accuracy": 0.94
+            },
+            {
+              "db": "Qdrant",
+              "index": "HNSW",
+              "build_time": "65min",
+              "query_latency": "8ms",
+              "accuracy": 0.97
+            },
+            {
+              "db": "Milvus",
+              "index": "IVF-FLAT",
+              "build_time": "35min",
+              "query_latency": "15ms",
+              "accuracy": 0.95
+            }
+          ],
+          "selected_configuration": {
+            "database": "Qdrant",
+            "index": "HNSW",
+            "parameters": {
+              "M": 16,
+              "efConstruction": 200,
+              "efSearch": 100
+            },
+            "justification": "Best accuracy-latency trade-off for financial domain"
+          }
+        }
+      }
+    },
+    "optimized_parameters": {
+      "final_configuration": {
+        "chunking": {
+          "strategy": "Hybrid chunking",
+          "base_size": 800,
+          "semantic_boundaries": true,
+          "overlap_percentage": 15,
+          "min_chunk_size": 200,
+          "normalization": [
+            "whitespace",
+            "unicode"
+          ]
+        },
+        "embedding": {
+          "model": "financial-bert-embeddings",
+          "dimensions": 512,
+          "batch_size": 32,
+          "pooling": "mean"
+        },
+        "vector_database": {
+          "database": "Qdrant",
+          "index_type": "HNSW",
+          "index_parameters": {
+            "M": 16,
+            "efConstruction": 200
+          },
+          "storage_compression": "scalar_quantization"
+        }
+      },
+      "performance_predictions": {
+        "ingestion_metrics": {
+          "processing_speed": "85 documents/minute",
+          "total_indexing_time": "2.5 hours for 10,000 docs",
+          "storage_requirements": "850MB total",
+          "memory_usage": "4GB peak during indexing"
+        },
+        "quality_metrics": {
+          "context_preservation": 0.85,
+          "semantic_coherence": 0.88,
+          "information_completeness": 0.92
+        },
+        "cost_analysis": {
+          "monthly_storage_cost": "$45",
+          "compute_cost": "$120/month",
+          "total_operational_cost": "$165/month"
+        }
+      }
+    }
+  }
+}
